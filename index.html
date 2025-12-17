@@ -19,7 +19,18 @@
   <button onclick="login()">Login with Pi</button>
 
   <script>
-    function login() {
+    function login(<script>
+  function login() {
+    const scopes = ['payments', 'username'];
+
+    Pi.authenticate(scopes, function(auth) {
+      alert("Logged in as: " + auth.user.username);
+    }, function(error) {
+      console.error(error);
+      alert("Login failed");
+    });
+  }
+</script>) {
       const scopes = ['payments', 'username'];
 
       Pi.authenticate(scopes, function(auth) {
