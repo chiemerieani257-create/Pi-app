@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My Pi App</title>
+  <meta charset="UTF-8">
+  <title>Pi Sandbox App</title>
 
   <!-- Pi SDK -->
   <script src="https://sdk.minepi.com/pi-sdk.js"></script>
@@ -10,36 +11,29 @@
       version: "2.0",
       sandbox: true
     });
+
+    function login() {
+      Pi.authenticate(
+        ["username", "payments"],
+        function (auth) {
+          alert("Login successful!\nUsername: " + auth.user.username);
+          console.log(auth);
+        },
+        function (error) {
+          alert("Login failed");
+          console.error(error);
+        }
+      );
+    }
   </script>
 </head>
 
-<body>
-  <h1>Welcome to My Pi App</h1>
+<body style="font-family: Arial, sans-serif; text-align: center; margin-top: 50px;">
+  <h1>Welcome to My Pi Sandbox App</h1>
+  <p>This is a Pi Network sandbox test app.</p>
 
-  <button onclick="login()">Login with Pi</button>
-
-  <script>
-    function login(<script>
-  function login() {
-    const scopes = ['payments', 'username'];
-
-    Pi.authenticate(scopes, function(auth) {
-      alert("Logged in as: " + auth.user.username);
-    }, function(error) {
-      console.error(error);
-      alert("Login failed");
-    });
-  }
-</script>) {
-      const scopes = ['payments', 'username'];
-
-      Pi.authenticate(scopes, function(auth) {
-        alert("Logged in as: " + auth.user.username);
-        console.log(auth);
-      }, function(error) {
-        console.error(error);
-      });
-    }
-  </script>
+  <button onclick="login()" style="padding: 10px 20px; font-size: 16px;">
+    Login with Pi
+  </button>
 </body>
 </html>
